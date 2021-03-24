@@ -1,6 +1,7 @@
 package EmployeeListAndMethods;
 
-public class EmployeeIDMethods {
+public class EmployeeIDMethods 
+{
 	public static Boolean validateEmploymentID(String type)
 	{
 		

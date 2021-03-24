@@ -1,32 +1,49 @@
 package EmployeeListAndMethods;
 
-public class HoursWorked {
+public class HoursWorked 
+{
 	public static Boolean validateEmployeeHoursWorked(String type)
 	{
-		StringBuilder rb = new StringBuilder();
-		 rb.append(type);
-		 rb.delete(2, 3);
-	
-		 var x=rb.toString();
-		 
-		 double tosring=Double.parseDouble(type);
-		 if(tosring>40.00||tosring<15.00)
-			{
-				return false;
-			}
-		 char[] chars = x.toCharArray();
-	      StringBuilder sb = new StringBuilder();
-	      for(char c : chars)
-	      {
-	         if(Character.isDigit(c))
-	         {
-	            sb.append(c);
-	         } 
-	      }
-	      if(sb.toString().endsWith(" "))
+	    if(!type.contains(".")||type.length()<=4)
+        {
+       	 return false;
+        }
+	    StringBuilder sb = new StringBuilder();
+	    sb.append(type);
+	      if(sb.toString().length()!=5)
 	         {
 	        	 sb.append(0);
 	         }
-		return sb.length()==4&& rb.length()==4?true:false;
+	      String x=sb.toString();
+
+
+		 
+		 //creates a char array with values from the string builder x variable
+		 char[] chars = x.toCharArray();
+		 //creates a string builder 
+		 StringBuilder rb = new StringBuilder();
+	      //for loop checks for numbers in the char array array and appends it to the string builder
+	      for(char c : chars)
+	      {
+	    	  //if character is a number then add it to the string builder
+	         if(Character.isDigit(c)||c=='.')
+	         {
+	            rb.append(c);
+	         } 
+	         else if(Character.isLetter(c))
+	         {
+	        	 return false;
+	         }
+	      }
+			//changes the string input value to a double value
+			double tosring=Double.parseDouble(type);
+			//business logic 
+			if(tosring<15.00||tosring>40.00)
+			{
+				return false;
+			}
+		
+		//return 
+		return rb.length()==5?true:false;
 	}
 }

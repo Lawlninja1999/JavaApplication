@@ -1,20 +1,16 @@
 package Test;
-import org.junit.Assert;
-import org.junit.jupiter.api.Test;
 
+import org.junit.Assert;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 import EmployeeListAndMethods.EmployeeIDMethods;
 
 class EmployeeIdTestPass {
 
-	@Test
-	void test1pass() {
-		var test=	EmployeeIDMethods.validateEmploymentID("312123");
+	@ParameterizedTest
+	@ValueSource(strings= {"103828","038288","485858","484384","483843"})
+	void testWillPassBecouseThereIsNoLettersAndSixDigitNumber(String input) {
+	var test=EmployeeIDMethods.validateEmploymentID(input);
 		Assert.assertTrue(test);
 	}
-	@Test
-	void test2pass() {
-		var test=	EmployeeIDMethods.validateEmploymentID("012123");
-		Assert.assertTrue(test);
-	}
-
 }

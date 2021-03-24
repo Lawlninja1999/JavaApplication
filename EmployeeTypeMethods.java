@@ -4,8 +4,12 @@ public class EmployeeTypeMethods {
 
 	public static Boolean validateEmploymentType(String type)
 	{
-		//checks the length of the inout string and makes sure the values entered are 'p' or 'f'
-		return type.toLowerCase().length()==1 && type.toLowerCase().contains("p")||type.toLowerCase().contains("f")&&type.toLowerCase().length()==1?true:false;
+		if(!(type.length()==1))
+		{
+			return false;
+		}
+		//checks the length of the input string and makes sure the values entered are 'p' or 'f'
+		return  type.toLowerCase().contains("p")||type.toLowerCase().contains("f")?true:false;
 	}
 	
 	
@@ -17,7 +21,7 @@ public class EmployeeTypeMethods {
 	      
 	      //for loop checks for numbers and adds them to the string builder 
 	      for(char c : chars){
-	         if(Character.isDigit(c)){
+	         if(!Character.isLetter(c)){
 	            sb.append(c);
 	         }
 	      }
